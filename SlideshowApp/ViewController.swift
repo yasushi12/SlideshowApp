@@ -24,19 +24,30 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var paintImageView: UIImageView!
     
+    @IBOutlet weak var nextButtonOutlet: UIButton!  //進むボタンを変数に関連付け
+    @IBOutlet weak var backButtonOutlet: UIButton!  //戻るボタンを変数に関連付け
+    @IBOutlet weak var startStopButtonOutlet: UIButton! //再生停止ボタンを変数に関連付け
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        paintImageView.image = UIImage(named: "image01.jpg")
         paintImageView.image = UIImage(named: images[indexNum])
+        startStopButtonOutlet.setTitle("再生", for: .normal)
     }
     
     @IBAction func startStopButton(_ sender: Any) {
         if self.timer == nil {
             self.timer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector:                  #selector(timerMethod), userInfo: nil, repeats: true)
+            startStopButtonOutlet.setTitle("停止", for: .normal)  //停止ボタンに変更
+            nextButtonOutlet.isEnabled = false  //進むボタンを選択不可にする
+            backButtonOutlet.isEnabled = false  //戻るボタンを選択不可にする
         } else if self.timer != nil {
             self.timer.invalidate()
             self.timer = nil
+            startStopButtonOutlet.setTitle("再生", for: .normal)  //再生ボタンに変更
+            nextButtonOutlet.isEnabled = true   //進むボタンを選択可能にする
+            backButtonOutlet.isEnabled = true   //戻るボタンを選択可能にする
         }
     }
     
@@ -73,6 +84,14 @@ class ViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //スライドショーを停止する
+        if self.timer != nil {
+            self.timer.invalidate()
+            self.timer = nil
+            startStopButtonOutlet.setTitle("再生", for: .normal)  //再生ボタンに変更
+        }
+        
+        //画像の値渡し
         let bigImageViewController:BigImageViewController = segue.destination as! BigImageViewController
         
         bigImageViewController.x = UIImage(named: images[indexNum])

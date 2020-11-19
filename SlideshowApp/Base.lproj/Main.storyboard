@@ -26,7 +26,7 @@
                                 </connections>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DFm-lw-rxS">
-                                <rect key="frame" x="80.666666666666686" y="320" width="31" height="30"/>
+                                <rect key="frame" x="80.666666666666671" y="320" width="31" height="30"/>
                                 <state key="normal" title="進む"/>
                                 <connections>
                                     <action selector="nextButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bd1-3F-JWc"/>
@@ -62,7 +62,10 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="backButtonOutlet" destination="OGt-pb-9qH" id="qOl-6o-ZV8"/>
+                        <outlet property="nextButtonOutlet" destination="DFm-lw-rxS" id="n6N-a0-lEw"/>
                         <outlet property="paintImageView" destination="HoH-6N-Uar" id="9Tl-2n-sz3"/>
+                        <outlet property="startStopButtonOutlet" destination="xfn-9J-yEN" id="19z-d4-BRb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
