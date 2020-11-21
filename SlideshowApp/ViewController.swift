@@ -89,6 +89,8 @@ class ViewController: UIViewController {
             self.timer.invalidate()
             self.timer = nil
             startStopButtonOutlet.setTitle("再生", for: .normal)  //再生ボタンに変更
+            nextButtonOutlet.isEnabled = true   //進むボタンを選択可能にする
+            backButtonOutlet.isEnabled = true   //戻るボタンを選択可能にする
         }
         
         //画像の値渡し
